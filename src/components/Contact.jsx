@@ -1,4 +1,4 @@
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import emailjs from '@emailjs/browser';
 import { FiSend, FiCheckCircle, FiAlertCircle } from 'react-icons/fi';
 
@@ -7,10 +7,18 @@ const Contact = () => {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
-    message: ''
+    phoneNo: '',
+    feedback: ''
   });
   const [status, setStatus] = useState({ type: '', message: '' });
   const [loading, setLoading] = useState(false);
+
+  // Initialize EmailJS
+  useEffect(() => {
+    emailjs.init({
+      publicKey: import.meta.env.VITE_EMAILJS_PUBLIC_KEY,
+    });
+  }, []);
 
   const handleChange = (e) => {
     setFormData({
@@ -24,25 +32,28 @@ const Contact = () => {
     setLoading(true);
     setStatus({ type: '', message: '' });
 
-    // EmailJS Configuration
-    // Replace with your actual EmailJS credentials
-    const serviceId = 'YOUR_SERVICE_ID';
-    const templateId = 'YOUR_TEMPLATE_ID';
-    const publicKey = 'YOUR_PUBLIC_KEY';
-
     try {
-      await emailjs.sendForm(
-        serviceId,
-        templateId,
-        formRef.current,
-        publicKey
+      const templateParams = {
+        from_name: formData.name,
+        email: formData.email,
+        contactNo: formData.phoneNo,
+        message: formData.feedback,
+        to_email: import.meta.env.VITE_EMAILJS_TO_EMAIL,
+      };
+
+      const response = await emailjs.send(
+        import.meta.env.VITE_EMAILJS_SERVICE_ID,
+        import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
+        templateParams
       );
 
-      setStatus({
-        type: 'success',
-        message: 'Message sent successfully! I\'ll get back to you soon.'
-      });
-      setFormData({ name: '', email: '', message: '' });
+      if (response.status === 200) {
+        setStatus({
+          type: 'success',
+          message: 'Message sent successfully! I\'ll get back to you soon.'
+        });
+        setFormData({ name: '', email: '', phoneNo: '', feedback: '' });
+      }
     } catch (error) {
       console.error('Email send failed:', error);
       setStatus({
@@ -104,6 +115,23 @@ const Contact = () => {
             />
           </div>
 
+          {/* Contact Number Input */}
+          <div className="group">
+            <label htmlFor="contact_number" className="block text-slate-lighter mb-2 font-medium">
+              Contact Number
+            </label>
+            <input
+              type="tel"
+              id="contact_number"
+              name="phoneNo"
+              value={formData.phoneNo}
+              onChange={handleChange}
+              required
+              className="w-full px-4 py-3 bg-dark-light border border-dark-lighter rounded focus:outline-none focus:border-primary text-slate-lighter transition-all duration-300 placeholder-slate/50"
+              placeholder="+1 (555) 123-4567"
+            />
+          </div>
+
           {/* Message Textarea */}
           <div className="group">
             <label htmlFor="message" className="block text-slate-lighter mb-2 font-medium">
@@ -111,8 +139,8 @@ const Contact = () => {
             </label>
             <textarea
               id="message"
-              name="message"
-              value={formData.message}
+              name="feedback"
+              value={formData.feedback}
               onChange={handleChange}
               required
               rows="6"
