@@ -5,25 +5,25 @@ const Skills = () => {
     {
       title: 'Frontend',
       icon: <FiLayout className="w-10 h-10" />,
-      skills: ['React', 'JavaScript', 'HTML/CSS', 'TailwindCSS', 'Redux', 'Next.js'],
+      skills: ['React', 'JavaScript', 'HTML/CSS', 'TailwindCSS', 'Redux', 'Material-UI', 'Livewire'],
       color: 'from-blue-500 to-cyan-500'
     },
     {
       title: 'Backend',
       icon: <FiCode className="w-10 h-10" />,
-      skills: ['Node.js', 'Express', 'Python', 'Django', 'REST APIs', 'GraphQL'],
+      skills: ['Node.js', 'Express', 'Laravel', 'PHP', 'REST APIs'],
       color: 'from-green-500 to-emerald-500'
     },
     {
       title: 'Database',
       icon: <FiDatabase className="w-10 h-10" />,
-      skills: ['MongoDB', 'PostgreSQL', 'MySQL', 'Firebase', 'Redis'],
+      skills: ['MongoDB', 'PostgreSQL', 'MySQL'],
       color: 'from-purple-500 to-pink-500'
     },
     {
       title: 'Tools & Others',
       icon: <FiTool className="w-10 h-10" />,
-      skills: ['Git', 'Docker', 'AWS', 'Jest', 'Webpack', 'CI/CD'],
+      skills: ['Git', 'Postman', 'Figma', 'Render.com', 'SEO Basics'],
       color: 'from-orange-500 to-red-500'
     }
   ];
