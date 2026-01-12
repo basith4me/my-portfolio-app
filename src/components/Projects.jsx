@@ -6,6 +6,12 @@ import {
   FiChevronLeft,
   FiChevronRight,
 } from "react-icons/fi";
+import trn1 from "../assets/trn-1.png";
+import trn2 from "../assets/trn-2.png";
+import trn3 from "../assets/trn-3.png";
+import ee1 from "../assets/ee-1.png";
+import ee2 from "../assets/ee-2.png";
+import ee3 from "../assets/ee-3.png";
 
 const Projects = () => {
   const projects = [
@@ -25,9 +31,9 @@ const Projects = () => {
       live: "https://tournaments-lk-1.onrender.com/",
       featured: true,
       images: [
-        "/src/assets/trn-1.png",
-        "/src/assets/trn-2.png",
-        "/src/assets/trn-3.png",
+        trn1,
+        trn2,
+        trn3,
       ],
     },
     {
@@ -39,9 +45,9 @@ const Projects = () => {
       live: "https://eliteengineeringdemoapp.netlify.app/",
       featured: true,
       images: [
-        "/src/assets/ee-1.png",
-        "/src/assets/ee-2.png",
-        "/src/assets/ee-3.png",
+        ee1,
+        ee2,
+        ee3,
       ],
     },
     {
@@ -283,7 +289,7 @@ const Projects = () => {
                     >
                       <FiGithub size={20} />
                     </a>
-                    <a
+                    {/* <a
                       href={project.live}
                       target="_blank"
                       rel="noopener noreferrer"
@@ -291,7 +297,7 @@ const Projects = () => {
                       aria-label="Live Demo"
                     >
                       <FiExternalLink size={20} />
-                    </a>
+                    </a> */}
                   </div>
                 </div>
 
