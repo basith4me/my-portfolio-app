@@ -5,7 +5,7 @@ const Skills = () => {
     {
       title: 'Frontend',
       icon: <FiLayout className="w-10 h-10" />,
-      skills: ['React', 'JavaScript', 'HTML/CSS', 'TailwindCSS', 'Redux', 'Material-UI', 'Livewire'],
+      skills: ['React', 'JavaScript', 'HTML/CSS', 'TailwindCSS', 'Redux', 'Material-UI', 'Livewire', 'Alpine.js', 'Bootstrap'],
       color: 'from-blue-500 to-cyan-500'
     },
     {
