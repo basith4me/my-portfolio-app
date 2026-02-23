@@ -16,7 +16,7 @@ import ee3 from "../assets/ee-3.png";
 const Projects = () => {
   const projects = [
     {
-      title: "TournamenmtsLK - sports website",
+      title: "TournamentsLK - sports website",
       description:
         "TournamentsLK is a sports platform that connects players and teams with tournament organizers. Players can discover and join tournaments that match their interests, while organizers can create and publish tournaments through the platform. The system includes secure user authentication using JWT, a dedicated dashboard for organizers to manage their tournaments, and an admin panel with full control over the entire system. User feedback is seamlessly sent to administrators via EmailJS to ensure effective communication and continuous improvement.s",
       technologies: [
